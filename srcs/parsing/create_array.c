@@ -6,7 +6,7 @@
 /*   By: tbhuiyan <tbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:32:43 by tbhuiyan          #+#    #+#             */
-/*   Updated: 2025/10/23 11:11:34 by tbhuiyan         ###   ########.fr       */
+/*   Updated: 2025/10/24 02:48:32 by tbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,13 @@ char	**create_array(int ac, char **av)
 	k = 0;
 	total = count_total_args(ac, av);
 	array = malloc(sizeof(char *) * (total + 1));
+	if (!array)
+		return (NULL);
 	while (av[i])
 	{
 		tmp = ft_split(av[i], ' ');
 		if (!tmp)
-		{
-			free(tmp);
 			return (NULL);
-		}
 		k = clean_array(array, tmp, k);
 		if (k == -1)
 			return (NULL);

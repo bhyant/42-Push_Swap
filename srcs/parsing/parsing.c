@@ -6,7 +6,7 @@
 /*   By: tbhuiyan <tbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:30:37 by tbhuiyan          #+#    #+#             */
-/*   Updated: 2025/10/23 22:46:50 by tbhuiyan         ###   ########.fr       */
+/*   Updated: 2025/10/24 02:45:56 by tbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	*parse_args(int ac, char **av)
 	{
 		int_values = ft_calloc(sizeof(int), (count_total_args(ac, av)));
 		str_values = create_array(ac, av);
+		if (!int_values || !str_values)
+			return (free(str_values), free(int_values), NULL);
 		if (!(ft_verif_and_convert(str_values, int_values))
 			|| ft_check_doubles(int_values, count_total_args(ac, av)))
 		{
