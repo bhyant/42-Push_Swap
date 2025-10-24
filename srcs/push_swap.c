@@ -6,7 +6,7 @@
 /*   By: tbhuiyan <tbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:00:00 by tbhuiyan          #+#    #+#             */
-/*   Updated: 2025/10/23 22:42:35 by tbhuiyan         ###   ########.fr       */
+/*   Updated: 2025/10/24 02:56:37 by tbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ int	main(int ac, char **av)
 	if (!indexed_array)
 		return (free(int_array), 1);
 	stack_a = create_stack(indexed_array, size);
+	if (!stack_a)
+		return (ft_putstr_fd("Error\n", 2), 0);
 	stack_b = NULL;
 	if (!is_sorted(stack_a))
 		sort_selector(&stack_a, &stack_b);
-	ft_node_clear(&stack_a);
-	ft_node_clear(&stack_b);
-	free(int_array);
-	free(indexed_array);
-	return (0);
+	return (ft_node_clear(&stack_a), ft_node_clear(&stack_b),
+		free(int_array), free(indexed_array), 0);
 }
