@@ -6,7 +6,7 @@
 /*   By: tbhuiyan <tbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:11:30 by tbhuiyan          #+#    #+#             */
-/*   Updated: 2025/10/23 23:32:37 by tbhuiyan         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:21:02 by tbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,22 @@ static void	sort_three(t_node **list)
 	val1 = (*list)->value;
 	val2 = (*list)->next->value;
 	val3 = (*list)->next->next->value;
-	if (val1 > val2 && val1 > val3)
-		rotate_a(list, 1);
-	else if (val2 > val1 && val2 > val3)
-		reverse_rotate_a(list, 1);
-	if (val1 > val2)
+	if (val1 < val2 && val2 > val3 && val1 < val3)
+	{
 		swap_a(list, 1);
+		rotate_a(list, 1);
+	}
+	else if (val1 < val2 && val2 > val3 && val1 > val3)
+		reverse_rotate_a(list, 1);
+	else if (val1 > val2 && val2 < val3 && val1 < val3)
+		swap_a(list, 1);
+	else if (val1 > val2 && val2 < val3 && val1 > val3)
+		rotate_a(list, 1);
+	else if (val1 > val2 && val2 > val3 && val1 > val3)
+	{
+		swap_a(list, 1);
+		reverse_rotate_a(list, 1);
+	}
 }
 
 static void	sort_four(t_node **list_a, t_node **list_b)
